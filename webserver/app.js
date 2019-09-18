@@ -1,18 +1,10 @@
 const HTTP = require('http');
 const FS = require('fs');
-
-const Server = require('./server.js');
-
+const Server = require('./lib/server.js');
 const port = 80;
 
-const server = new Server();
-server.post('/aluno/get', req => {
-	const obj = req.req;
-	for (let attr in obj) {
-		console.log(attr);
-	}
-});
+const server = new Server({ port, root: __dirname + '/web' });
 
-server.start(port, () => {
+server.start(() => {
 	console.log(`Server started at port ${port} - ${new Date()}`);
 });
