@@ -1,0 +1,45 @@
+:root {
+	--leftbar-closed-width: 50px;
+}
+#leftbar, #workspace, #popup_wrapper {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+}
+#leftbar {
+	left: 0px;
+	width: var(--leftbar-closed-width);
+	background-color: #444;
+}
+#workspace {
+	left: var(--leftbar-closed-width);
+	right: 0px;
+	background-color: #ddd;
+	padding-top: calc(var(--workspace-padding-y) - var(--workspace-space-y));
+	padding-left: calc(var(--workspace-padding-x) - var(--workspace-space-x));
+	padding-right: var(--workspace-padding-x);
+}
+#popup_wrapper {
+	display: none;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.85);
+}
+
+.sx-1 { width: var(--sx-1); }
+.sx-2 { width: var(--sx-2); }
+.sx-3 { width: var(--sx-3); }
+.sx-4 { width: var(--sx-4); }
+.sx-5 { width: var(--sx-5); }
+
+.sy-1 { height: var(--sy-1); }
+.sy-2 { height: var(--sy-2); }
+.sy-3 { height: var(--sy-3); }
+.sy-4 { height: var(--sy-4); }
+.sy-5 { height: var(--sy-5); }
+
+.inline-block {
+	margin-top: var(--workspace-space-y);
+	margin-left: var(--workspace-space-x);
+	display: inline-block;
+}
