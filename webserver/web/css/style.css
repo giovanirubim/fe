@@ -1,5 +1,10 @@
 :root {
-	--leftbar-closed-width: 50px;
+	--lb-closed-sx: 50px;
+	--input-border-width: 1px;
+	--itext-sub-x: calc((var(--input-padding-x) + var(--input-border-width))*2);
+	--itext-sub-y: calc(var(--input-border-width)*2);
+	--ibutton-sub-y: calc(var(--input-border-width)*2);
+	--cell-title-sy: 20px;
 }
 #leftbar, #workspace, #popup_wrapper {
 	position: absolute;
@@ -8,16 +13,18 @@
 }
 #leftbar {
 	left: 0px;
-	width: var(--leftbar-closed-width);
+	width: var(--lb-closed-sx);
 	background-color: #444;
 }
 #workspace {
-	left: var(--leftbar-closed-width);
+	left: var(--lb-closed-sx);
 	right: 0px;
 	background-color: #ddd;
-	padding-top: calc(var(--workspace-padding-y) - var(--workspace-space-y));
-	padding-left: calc(var(--workspace-padding-x) - var(--workspace-space-x));
-	padding-right: var(--workspace-padding-x);
+}
+#workspace > .workspace-content {
+	margin-top: calc(var(--ws-padding-y) - var(--ws-space-y));
+	margin-left: calc(var(--ws-padding-x) - var(--ws-space-x));
+	margin-right: var(--ws-padding-x);
 }
 #popup_wrapper {
 	display: none;
@@ -30,16 +37,42 @@
 .sx-2 { width: var(--sx-2); }
 .sx-3 { width: var(--sx-3); }
 .sx-4 { width: var(--sx-4); }
-.sx-5 { width: var(--sx-5); }
 
 .sy-1 { height: var(--sy-1); }
 .sy-2 { height: var(--sy-2); }
 .sy-3 { height: var(--sy-3); }
 .sy-4 { height: var(--sy-4); }
-.sy-5 { height: var(--sy-5); }
 
-.inline-block {
-	margin-top: var(--workspace-space-y);
-	margin-left: var(--workspace-space-x);
+.cell {
+	vertical-align: top;
 	display: inline-block;
+	margin-top: var(--ws-space-y);
+	margin-left: var(--ws-space-x);
+}
+
+.cell input {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: var(--input-font-size);
+}
+.cell .content input[type="text"] {
+	border: var(--input-border-width) solid #777;
+	padding-left: var(--input-padding-x);
+	padding-right: var(--input-padding-x);
+	width: calc(100% - var(--itext-sub-x));
+}
+.sy-1 input[type="text"] {
+	height: calc(var(--sy-1) - var(--cell-title-sy) - var(--itext-sub-y));
+}
+.sy-1 input[type="button"] {
+	height: calc(var(--sy-1) - var(--cell-title-sy) - var(--ibutton-sub-y));
+}
+.cell .title {
+	font-size: var(--cell-title-sy);
+	height: var(--cell-title-sy);
+}
+
+body {
+	font-size: 0px;
+	font-family: arial;
 }

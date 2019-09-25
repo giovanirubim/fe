@@ -19,6 +19,15 @@ export const setVar = (name, value) => {
 	sheet.insertRule(`:root{--${name}:${value};}`, index);
 	value_map[name] = value;
 };
+export const setPx = (a, b) => {
+	if (a instanceof Object) {
+		for (let name in a) {
+			setVar(name, a[name] + 'px');
+		}
+	} else {
+		setVar(a, b + 'px');
+	}
+};
 export const getVar = name => value_map[name] || null;
 export const val = function(name, value) {
 	if (arguments.length < 2) {
