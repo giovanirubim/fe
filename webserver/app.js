@@ -173,7 +173,6 @@ const server = http.createServer((req, res) => {
 
 	// Retorna o arquivo de importação
 	if (path === '/js/import-forms.js') {
-		createImportScript();
 		request.sendAsFile(import_script, '.js');
 		return;
 	}
@@ -236,6 +235,7 @@ const loadRouts = () => {
 };
 
 loadRouts();
+createImportScript();
 
 server.listen(port, () => {
 	console.log('Server listening at port ' + port);
